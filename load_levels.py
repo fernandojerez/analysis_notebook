@@ -28,3 +28,39 @@ from benefit b
 inner join company c on b.company = c.id
 """, engine)
 
+def classify_position(position: str):
+    lower_position = position.lower().strip()
+    if 'software' in lower_position and 'manager' in lower_position:
+        return 'Software Manager'
+
+    if lower_position == 'program manager':
+        return 'Software Manager'
+
+    if 'product' in lower_position and 'manager' in lower_position:
+        return 'Product Manager'
+
+    if 'banker' in lower_position or 'accountant' in lower_position or 'finance' in lower_position:
+        return 'Financing'
+
+    if lower_position in ['recruiter'] or 'human' in lower_position:
+        return 'Human Resources'
+
+    if lower_position in ['civil engineer', 'mechanical engineer', 'biomedical engineer']:
+        return 'Others'
+
+    if lower_position in ['software engineer', 'systems engineer']:
+        return 'Software Engineer'
+
+    if lower_position == 'applied scientist':
+        return 'Data Scientist'
+
+    if lower_position == 'marketing operations':
+        return 'Marketing'
+
+    if lower_position == 'security':
+        return 'Security Engineer'
+
+    if lower_position == 'business development':
+        return 'Business Analyst'
+
+    return position.strip()
